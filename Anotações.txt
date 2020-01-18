@@ -1,0 +1,23 @@
+Comandos django
+
+django-admin startproject mysite  	# Cria um projeto Django. "mysite" é o nome do projeto
+python manage.py runserver		# Inicializa o server este comando deve ser executado dentro do diretório criado pelo comando anterior. Onde se encontra o arquivo manage.py.
+python manage.py startapp polls		# Cria um novo aplicativo. Também deve ser executado no diretório do arquivo manage.py. "polls" é o nome do app.
+
+É preciso ir na no arquivo mysite/setings.py para alterar o banco para o mysql (no meu caso). Em DATABASES usar:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db.mysql',
+        'USER': ,
+        'PASSWORD': ,
+        'HOST': ,
+    }
+}
+
+E em TIME_ZONE usar o da time zone da localzação. No meu caso, o de Brasilia: TIME_ZONE = 'UTC-3'.
+
+É preciso estar nas versões: Djando==2.0.5, mysqlclient==1.3.12
+
+pipenv install mysqlclient		# é preciso instalar o mysqlclient antes.
+python manage.py migrate		# Cria as tabelas necessárias no banco de dados.
