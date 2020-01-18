@@ -4,7 +4,7 @@ django-admin startproject mysite  	# Cria um projeto Django. "mysite" é o nome 
 python manage.py runserver		# Inicializa o server este comando deve ser executado dentro do diretório criado pelo comando anterior. Onde se encontra o arquivo manage.py.
 python manage.py startapp polls		# Cria um novo aplicativo. Também deve ser executado no diretório do arquivo manage.py. "polls" é o nome do app.
 
-É preciso ir na no arquivo mysite/setings.py para alterar o banco para o mysql (no meu caso). Em DATABASES usar:
+	É preciso ir na no arquivo mysite/setings.py para alterar o banco para o mysql (no meu caso). Em DATABASES usar:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -15,9 +15,47 @@ DATABASES = {
     }
 }
 
-E em TIME_ZONE usar o da time zone da localzação. No meu caso, o de Brasilia: TIME_ZONE = 'UTC-3'.
+	E em TIME_ZONE usar o da time zone da localzação. No meu caso, o de Brasilia: TIME_ZONE = 'UTC-3'.
 
-É preciso estar nas versões: Djando==2.0.5, mysqlclient==1.3.12
+	É preciso estar nas versões: Djando==2.2.9, mysqlclient==1.4.6
 
 pipenv install mysqlclient		# é preciso instalar o mysqlclient antes.
 python manage.py migrate		# Cria as tabelas necessárias no banco de dados.
+
+	É preciso criar os models para armazenar as operações a serem feitas no BD. Olhar o arquivo mysite/models.py
+	Adiciona-se a linha 'polls.apps.PollsConfig', no INSTALLED_APPS do setings.py e executa o comando para incluir o app Polls:
+python manage.py makemigrations polls
+
+	O comando sqlmigrate pega nomes de migração e retorna seus SQL:
+python manage.py sqlmigrate polls 0001
+
+	Se você estiver interessado, também pode executar o python manage.py check; isso verifica se há problemas no seu projeto sem fazer migrações ou tocar no banco de dados.
+	Agora, execute migrate novamente para criar essas tabelas de modelo no seu banco de dados:
+python manage.py migrate
+
+	 Lembre-se do guia de três etapas para fazer alterações no modelo:
+		Change your models (in models.py).
+		Run 'python manage.py makemigrations' to create migrations for those changes
+		Run 'python manage.py migrate' to apply those changes to the database.
+
+python manage.py shell			# Ativa o shell Python
+
+	Criando um usuário admin
+	Primeiro, precisamos criar um usuário que possa fazer login no site de administração. Execute o seguinte comando:
+python manage.py createsuperuser
+	Username: admin
+	Emailadmin@example.com
+	Password: universal1
+	
+	Inicie o servidor de desenvolvimento:
+python manage.py runserver
+	Verificar no site para melhor entendimento https://docs.djangoproject.com/en/3.0/intro/tutorial02/#creating-an-admin-user
+
+
+
+
+
+
+
+
+
