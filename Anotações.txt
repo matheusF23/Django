@@ -15,7 +15,7 @@ DATABASES = {
     }
 }
 
-	E em TIME_ZONE usar o da time zone da localzação. No meu caso, o de Brasilia: TIME_ZONE = 'UTC-3'.
+	E em TIME_ZONE usar o da time zone da localzação. No meu caso: TIME_ZONE = 'America/Sao_Paulo'.
 
 	É preciso estar nas versões: Djando==2.2.9, mysqlclient==1.4.6
 
@@ -44,14 +44,20 @@ python manage.py shell			# Ativa o shell Python
 	Primeiro, precisamos criar um usuário que possa fazer login no site de administração. Execute o seguinte comando:
 python manage.py createsuperuser
 	Username: admin
-	Emailadmin@example.com
+	Email: admin@example.com
 	Password: universal1
 	
 	Inicie o servidor de desenvolvimento:
 python manage.py runserver
 	Verificar no site para melhor entendimento https://docs.djangoproject.com/en/3.0/intro/tutorial02/#creating-an-admin-user
 
+## Criando views ##
+	Sempre que criar um view é preciso conectá-la ao módulo polls.urls.
 
+	Seu template deve estar em polls/templates/polls/index.html
+
+	A função render() toma o objeto de solicitação como seu primeiro argumento, um nome de modelo como seu segundo argumento e um dicionário como seu terceiro argumento opcional. 
+	Ele retorna um objeto HttpResponse do modelo fornecido, renderizado com o contexto especificado.
 
 
 
