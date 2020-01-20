@@ -17,7 +17,7 @@ DATABASES = {
 
 	E em TIME_ZONE usar o da time zone da localzação. No meu caso: TIME_ZONE = 'America/Sao_Paulo'.
 
-	É preciso estar nas versões: Djando==2.2.9, mysqlclient==1.4.6
+	É preciso estar nas versões: Djando==2.2.9, mysqlclient==1.4.6, mysql server 8.0.19
 
 pipenv install mysqlclient		# é preciso instalar o mysqlclient antes.
 python manage.py migrate		# Cria as tabelas necessárias no banco de dados.
@@ -59,7 +59,11 @@ python manage.py runserver
 	A função render() toma o objeto de solicitação como seu primeiro argumento, um nome de modelo como seu segundo argumento e um dicionário como seu terceiro argumento opcional. 
 	Ele retorna um objeto HttpResponse do modelo fornecido, renderizado com o contexto especificado.
 
-
+## Trabalhando com testes
+	Escreva os testes em tests.py do app
+	Execute o comando no terminal
+		python manage.py test polls
+	para iniciar os testes.
 
 
 
