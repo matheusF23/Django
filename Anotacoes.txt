@@ -65,7 +65,10 @@ python manage.py runserver
 		python manage.py test polls
 	para iniciar os testes.
 
-
+	Boas regras práticas incluem ter:
+		um TestClass separado para cada model ou view
+		um método de teste separado para cada conjunto de condições que você deseja testar
+		nomes de métodos de teste que descrevem suas funções
 
 
 
