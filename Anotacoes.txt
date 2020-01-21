@@ -70,5 +70,5 @@ python manage.py runserver
 		um método de teste separado para cada conjunto de condições que você deseja testar
 		nomes de métodos de teste que descrevem suas funções
 
-
+## Continuar estudo: https://docs.djangoproject.com/en/2.2/intro/reusable-apps/
 
